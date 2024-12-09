@@ -17,5 +17,15 @@ namespace Tyuiu.DylginA.Sprint6.Task0.V22
             double result = ds.Calculate(x);
             textBoxResult.Text = result.ToString();
         }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

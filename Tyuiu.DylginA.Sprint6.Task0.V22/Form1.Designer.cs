@@ -35,7 +35,9 @@
             label2 = new Label();
             label6 = new Label();
             pictureBox1 = new PictureBox();
+            chart1 = new FastReport.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             SuspendLayout();
             // 
             // buttonComplete
@@ -91,11 +93,21 @@
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
+            // chart1
+            // 
+            chart1.Location = new Point(461, 132);
+            chart1.Name = "chart1";
+            chart1.Size = new Size(289, 229);
+            chart1.TabIndex = 12;
+            chart1.Text = "chart1";
+            chart1.Click += chart1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(chart1);
             Controls.Add(pictureBox1);
             Controls.Add(label6);
             Controls.Add(label2);
@@ -105,6 +117,7 @@
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -117,5 +130,6 @@
         private Label label2;
         private Label label6;
         private PictureBox pictureBox1;
+        private FastReport.DataVisualization.Charting.Chart chart1;
     }
 }

@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNetProjects.WpfToolkit.DataVisualization" Version="6.1.94" />
-    <PackageReference Include="FastReport.DataVisualization" Version="2025.1.7" />
-    <PackageReference Include="Syncfusion.Blazor.DataVizCommon" Version="27.2.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="tyuiu.cources.programming.interfaces">
       <HintPath>..\tyuiu.cources.programming.interfaces.dll</HintPath>
     </Reference>

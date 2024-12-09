@@ -11,15 +11,15 @@ namespace Tyuiu.DylginA.Sprint6.Task1.V22.Lib
             for (int x = startValue; x <= stopValue; x++)
             {
                 double result;
-                if (x + 1.2 == 0)
+                if (Math.Cos(x)+1 == 0)
                 {
                     result = 0;
                 }
                 else
                 {
-                    result = 3*x+2-((2*x-x)/Math.Cos(x)+1);
+                    result = 3*x+2-((2*x-x)/(Math.Cos(x)+1));
                 }
-                MassResult[index] = result;
+                MassResult[index] = Math.Round(result,2);
                 index++;
             }
             return MassResult;

@@ -13,10 +13,17 @@ namespace Tyuiu.DylginA.Sprint6.Task4.V8.Lib
             int count = 0;
             for (int x = startValue; x <= stopValue; x++)
             {
-                y = Math.Sin(x) + (Math.Cos(x)+1)/(2-x)+2*x;
-                y = Math.Round(y, 2);
-                result[count] = y;
-                count++;
+                if (2-x == 0)
+                {
+                    y=0;
+                }
+                else
+                {
+                    y = Math.Sin(x) + (Math.Cos(x) + 1) / (2 - x) + 2 * x;
+                    y = Math.Round(y, 2);
+                    result[count] = y;
+                    count++;
+                }
             }
             return result;
         }

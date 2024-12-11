@@ -19,7 +19,7 @@ namespace Tyuiu.DylginA.Sprint6.Task4.V8.Lib
                 }
                 else
                 {
-                    y = Math.Sin(x) + (Math.Cos(x) + 1) / (2 - x) + 2 * x;
+                    y = Math.Sin(x) + ((Math.Cos(x) + 1) / (2 - x)) + 2 * x;
                     y = Math.Round(y, 2);
                     result[count] = y;
                     count++;

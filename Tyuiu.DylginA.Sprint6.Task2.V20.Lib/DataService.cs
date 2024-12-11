@@ -17,7 +17,7 @@ namespace Tyuiu.DylginA.Sprint6.Task2.V20.Lib
                 }
                 else
                 {
-                    result = ((Math.Sin(x) / (x + 1.2)) + Math.Sin(x) * 2 - 2 *x);
+                    result = ((Math.Sin(x) / (x + 1.2)) - Math.Sin(x) * 2 - 2 *x);
                 }
                 MassResult[index] = Math.Round(result, 2);
                 index++;

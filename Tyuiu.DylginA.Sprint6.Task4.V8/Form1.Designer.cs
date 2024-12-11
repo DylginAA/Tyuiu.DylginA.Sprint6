@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             label2 = new Label();
@@ -44,6 +44,8 @@
             FX = new DataGridViewTextBoxColumn();
             buttonComplete = new Button();
             buttonInfo = new Button();
+            textBoxOut = new TextBox();
+            buttonSave = new Button();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartResult).BeginInit();
@@ -117,17 +119,17 @@
             // 
             // chartResult
             // 
-            chartArea2.Name = "ChartArea1";
-            chartResult.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chartResult.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            chartResult.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chartResult.Legends.Add(legend1);
             chartResult.Location = new Point(172, 30);
             chartResult.Name = "chartResult";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chartResult.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chartResult.Series.Add(series1);
             chartResult.Size = new Size(509, 327);
             chartResult.TabIndex = 1;
             chartResult.Text = "chart1";
@@ -177,12 +179,32 @@
             buttonInfo.TabIndex = 4;
             buttonInfo.Text = "?";
             buttonInfo.UseVisualStyleBackColor = true;
+            buttonInfo.Click += buttoninfo_Click;
+            // 
+            // textBoxOut
+            // 
+            textBoxOut.Location = new Point(659, 387);
+            textBoxOut.Name = "textBoxOut";
+            textBoxOut.Size = new Size(271, 27);
+            textBoxOut.TabIndex = 5;
+            // 
+            // buttonSave
+            // 
+            buttonSave.Location = new Point(500, 383);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(136, 29);
+            buttonSave.TabIndex = 6;
+            buttonSave.Text = "Сохранить";
+            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Click += buttonSave_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1178, 450);
+            Controls.Add(buttonSave);
+            Controls.Add(textBoxOut);
             Controls.Add(buttonInfo);
             Controls.Add(buttonComplete);
             Controls.Add(groupBox3);
@@ -196,6 +218,7 @@
             ((System.ComponentModel.ISupportInitialize)chartResult).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -213,5 +236,7 @@
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn X;
         private DataGridViewTextBoxColumn FX;
+        private TextBox textBoxOut;
+        private Button buttonSave;
     }
 }

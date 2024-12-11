@@ -1,4 +1,4 @@
-using Tyuiu.DylginA.Sprint6.Task4.V8.Lib;
+﻿using Tyuiu.DylginA.Sprint6.Task4.V8.Lib;
 
 namespace Tyuiu.DylginA.Sprint6.Task4.V8
 {
@@ -14,21 +14,39 @@ namespace Tyuiu.DylginA.Sprint6.Task4.V8
         {
             int startValue = Convert.ToInt32(textBoxStart.Text);
             int stopValue = Convert.ToInt32(textBoxEnd.Text);
-            string newpath = Path.Combine(Path.GetTempPath(),"DataSprint6", "OutPutDataFileTask1.txt");
             int len = ds.GetMassFunction(startValue, stopValue).Length;
-
-            double[] valueArray;
-            valueArray = new double[len];
-            valueArray = ds.GetMassFunction(startValue, stopValue);
-
-            this.chartResult.Titles.Add("��������� F(X)= sin(x) / x + 1,2 + cos(x) * 7x - 2");
-            this.chartResult.ChartAreas[0].AxisX.Title = "��� X";
-            this.chartResult.ChartAreas[0].AxisY.Title = "��� Y";
+            double[] res = new double[len];
+            res = ds.GetMassFunction(startValue, stopValue);
+            this.chartResult.ChartAreas[0].AxisX.Title = "Îñü X";
+            this.chartResult.ChartAreas[0].AxisY.Title = "Îñü Y";
+            textBoxOut.Text = "";
             for (int i = 0; i <= len - 1; i++)
             {
-                this.dataGridView1.Rows.Add(Convert.ToString(startValue), Convert.ToString(valueArray[i]));
-                this.chartResult.Series[0].Points.AddXY(startValue, valueArray[i]);
+                this.chartResult.Series[0].Points.AddXY(startValue, res[i]);
+                textBoxOut.AppendText(res[i] + Environment.NewLine);
                 startValue++;
+            }
+        }
+
+        private void buttoninfo_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Выполнил студент группы ИБКСБ-24-1 Дылгин Антон",
+              "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            string path = $@"{Directory.GetCurrentDirectory()}\OutPutFileTask4V10.txt";
+            File.WriteAllText(path, textBoxOut.Text);
+
+            DialogResult dialogResult = MessageBox.Show("Файл " + path + " ñîõðàíåí óñïåøíî! \nÎòêðûòü åãî â áëîêíîòå?",
+                "Ñîîáùåíèå", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (dialogResult == DialogResult.Yes)
+            {
+                System.Diagnostics.Process txt = new System.Diagnostics.Process();
+                txt.StartInfo.FileName = "notepad.exe";
+                txt.StartInfo.Arguments = path;
+                txt.Start();
             }
         }
     }

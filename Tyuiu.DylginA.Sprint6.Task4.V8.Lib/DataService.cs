@@ -6,27 +6,19 @@ namespace Tyuiu.DylginA.Sprint6.Task4.V8.Lib
     {
         public double[] GetMassFunction(int startValue, int stopValue)
         {
-            double[] MassResult = new double[11];
-            string newpath = Path.Combine(Path.GetTempPath(), "DataSprint6", "OutPutDataFileTask1.txt");
-            int index = 0;
+      
+            int len = (stopValue - startValue) + 1;
+            double[] result = new double[len];
+            double y;
+            int count = 0;
             for (int x = startValue; x <= stopValue; x++)
             {
-                double y;
-                if (x + 1.2 == 0)
-                {
-                    y = 0;
-                }
-                else
-                {
-                    y = Math.Round(Math.Sin(x) + ((Math.Cos(x)+1)/(2-x)) + 2*x,2);
-                    string strY = Convert.ToString(y);
-                    File.AppendAllText(newpath, strY + Environment.NewLine);
-                }
-                MassResult[index] = Math.Round(y, 2);
-                index++;
+                y = ((5 * x + 2.5) / (Math.Sin(x) + 3)) + 2 * x + Math.Cos(x);
+                y = Math.Round(y, 2);
+                result[count] = y;
+                count++;
             }
-
-            return MassResult;
+            return result;
         }
     }
 }

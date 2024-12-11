@@ -1,4 +1,5 @@
-Ôªøusing Tyuiu.DylginA.Sprint6.Task2.V20.Lib;
+using System.Windows.Forms.VisualStyles;
+using Tyuiu.DylginA.Sprint6.Task2.V20.Lib;
 namespace Tyuiu.DylginA.Sprint6.Task2.V20
 {
     public partial class Form1 : Form
@@ -16,8 +17,8 @@ namespace Tyuiu.DylginA.Sprint6.Task2.V20
 
         private void buttonComplete_Click(object sender, EventArgs e)
         {
-            int startValue = Convert.ToInt32(textBoxStart.Text);
-            int stopValue = Convert.ToInt32(textBoxEnd.Text);
+            int startValue = Convert.ToInt32(textBoxStartVal.Text);
+            int stopValue = Convert.ToInt32(textBoxEndVal.Text);
 
             int len = ds.GetMassFunction(startValue, stopValue).Length;
 
@@ -25,12 +26,12 @@ namespace Tyuiu.DylginA.Sprint6.Task2.V20
             valueArray = new double[len];
             valueArray = ds.GetMassFunction(startValue, stopValue);
 
-            this.chartResult.Titles.Add("–£—Ä–∞–≤–Ω–µ–Ω–∏–µ F(X)= sin(x) / x + 1,2 + cos(x) * 7x - 2");
-            this.chartResult.ChartAreas[0].AxisX.Title = "–û—Å—å X";
-            this.chartResult.ChartAreas[0].AxisY.Title = "–û—Å—å Y";
+            this.chartResult.Titles.Add("”‡‚ÌÂÌËÂ F(X)= sin(x) / x + 1,2 + cos(x) * 7x - 2");
+            this.chartResult.ChartAreas[0].AxisX.Title = "ŒÒ¸ X";
+            this.chartResult.ChartAreas[0].AxisY.Title = "ŒÒ¸ Y";
             for (int i = 0; i <= len - 1; i++)
             {
-                this.dataGridResult.Rows.Add(Convert.ToString(startValue), Convert.ToString(valueArray[i]));
+                this.dataGridViewResult.Rows.Add(Convert.ToString(startValue), Convert.ToString(valueArray[i]));
                 this.chartResult.Series[0].Points.AddXY(startValue, valueArray[i]);
                 startValue++;
             }

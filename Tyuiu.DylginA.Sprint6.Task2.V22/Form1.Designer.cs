@@ -1,4 +1,4 @@
-﻿namespace Tyuiu.DylginA.Sprint6.Task2.V22
+﻿namespace Tyuiu.DylginA.Sprint6.Task2.V20
 {
     partial class Form1
     {

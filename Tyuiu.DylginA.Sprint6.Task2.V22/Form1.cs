@@ -1,5 +1,5 @@
 using Tyuiu.DylginA.Sprint6.Task2.V22.Lib;
-namespace Tyuiu.DylginA.Sprint6.Task2.V22
+namespace Tyuiu.DylginA.Sprint6.Task2.V20
 {
     public partial class Form1 : Form
     {
@@ -19,7 +19,6 @@ namespace Tyuiu.DylginA.Sprint6.Task2.V22
             int startValue = Convert.ToInt32(textBoxStart.Text);
             int stopValue = Convert.ToInt32(textBoxEnd.Text);
 
-            string strLine;
             int len = ds.GetMassFunction(startValue, stopValue).Length;
 
             double[] valueArray;

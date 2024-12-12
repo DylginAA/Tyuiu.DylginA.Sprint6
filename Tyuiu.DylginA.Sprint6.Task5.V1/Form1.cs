@@ -15,35 +15,15 @@ namespace Tyuiu.DylginA.Sprint6.Task5.V1
         DataService ds = new DataService();
         private void buttonComplete_Click(object sender, EventArgs e)
         {
-            string path = Path.Combine(Path.GetTempPath(), "DataSprint6", "InPutDataFileTask5V1.txt");
+            string path = Path.Combine(Path.GetTempPath(),"DataSprint6", "InPutDataFileTask5V1.txt");
+
             double[] numbers = ds.LoadFromDataFile(path);
 
-            List<double> pnList = new List<double>();
-
-            // Пройдем по массиву и добавим только положительные числа
+            dataGridResult.Rows.Clear();
             foreach (double number in numbers)
             {
-                if (number > 0)  // Проверка на положительные числа
-                {
-                    pnList.Add(Math.Round(number, 3));  // Округляем до 3 знаков после запятой
-                }
+                dataGridResult.Rows.Add(number);
             }
-
-            // Преобразуем список в массив
-            double[] pn = pnList.ToArray();
-
-            // Заполнение DataGridView
-            dataGridResult.Rows.Clear();
-            foreach (double number in pn)
-            {
-                dataGridResult.Rows.Add(number); // Округленные значения
-            }
-            Debug.WriteLine("Отфильтрованные положительные числа:");
-            foreach (double number in pn)
-            {
-                Debug.WriteLine(number);  // Выводим каждое положительное число в окно Output
-            }
-            // Построение диаграммы
             chartResult.Series.Clear();
             Series series = new Series
             {
@@ -52,9 +32,9 @@ namespace Tyuiu.DylginA.Sprint6.Task5.V1
                 ChartType = SeriesChartType.Column
             };
 
-            foreach (double number in pn)
+            foreach (double number in numbers)
             {
-                series.Points.Add(number);
+                series.Points.Add(number); 
             }
 
             chartResult.Series.Add(series);

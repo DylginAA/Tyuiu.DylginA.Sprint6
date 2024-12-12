@@ -5,20 +5,24 @@ namespace Tyuiu.DylginA.Sprint6.Task5.V1.Lib
     {
         public double[] LoadFromDataFile(string path)
         {
-            List<double> numbers = new List<double>();
             string[] lines = File.ReadAllLines(path);
 
+            double[] positiveNumbers = new double[lines.Length];
+            int index = 0;
             foreach (string line in lines)
             {
-                double number;
-                bool isNumber = double.TryParse(line, out number);
-                if (isNumber)
+                double number = Convert.ToDouble(line); 
+
+                if (number > 0)
                 {
-                    numbers.Add(number);
+                    positiveNumbers[index] = Math.Round(number, 3);
+                    index++;
                 }
             }
+            double[] result = new double[index];
+            Array.Copy(positiveNumbers, result, index);
 
-            return numbers.ToArray();
+            return result;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Tyuiu.DylginA.Sprint6.Task6.V10.Lib
 
                 foreach (string word in words)
                 {
-                    if (word.ToLower().Contains("w"))
+                    if (word.Contains("w"))
                     {
                         result += word + " ";
                     }

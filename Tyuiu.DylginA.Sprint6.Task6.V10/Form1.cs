@@ -32,7 +32,6 @@ namespace Tyuiu.DylginA.Sprint6.Task6.V10
             }
             string result = ds.CollectTextFromFile(path);
             textBoxOut.Text = result;
-
         }
     }
 }

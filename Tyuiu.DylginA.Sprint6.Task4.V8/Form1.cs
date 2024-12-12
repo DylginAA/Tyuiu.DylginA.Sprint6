@@ -1,4 +1,5 @@
-﻿using Tyuiu.DylginA.Sprint6.Task4.V8.Lib;
+﻿using System.Windows.Forms.DataVisualization.Charting;
+using Tyuiu.DylginA.Sprint6.Task4.V8.Lib;
 
 namespace Tyuiu.DylginA.Sprint6.Task4.V8
 {
@@ -12,19 +13,19 @@ namespace Tyuiu.DylginA.Sprint6.Task4.V8
 
         private void buttonComplete_Click(object sender, EventArgs e)
         {
+            dataGridResult.Rows.Clear();
+            chartResult.Series["F(x)"].Points.Clear();
             int startValue = Convert.ToInt32(textBoxStart.Text);
             int stopValue = Convert.ToInt32(textBoxEnd.Text);
-            int len = ds.GetMassFunction(startValue, stopValue).Length;
-            double[] res = new double[len];
-            res = ds.GetMassFunction(startValue, stopValue);
-            this.chartResult.ChartAreas[0].AxisX.Title = "Îñü X";
-            this.chartResult.ChartAreas[0].AxisY.Title = "Îñü Y";
-            textBoxOut.Text = "";
-            for (int i = 0; i <= len - 1; i++)
+            double[] results = ds.GetMassFunction(startValue, stopValue);
+
+            for (int i = 0; i < results.Length; i++)
             {
-                this.chartResult.Series[0].Points.AddXY(startValue, res[i]);
-                textBoxOut.AppendText(res[i] + Environment.NewLine);
-                startValue++;
+                int x = startValue + i;
+                double y = results[i];
+
+                dataGridResult.Rows.Add(x, y);
+                chartResult.Series["F(x)"].Points.AddXY(x, y);
             }
         }
 
@@ -37,17 +38,26 @@ namespace Tyuiu.DylginA.Sprint6.Task4.V8
         private void buttonSave_Click(object sender, EventArgs e)
         {
             string path = $@"{Directory.GetCurrentDirectory()}\OutPutFileTask4V10.txt";
-            File.WriteAllText(path, textBoxOut.Text);
-
-            DialogResult dialogResult = MessageBox.Show("Файл " + path + " ñîõðàíåí óñïåøíî! \nÎòêðûòü åãî â áëîêíîòå?",
-                "Ñîîáùåíèå", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (dialogResult == DialogResult.Yes)
+            using (StreamWriter writer = new StreamWriter(path))
             {
-                System.Diagnostics.Process txt = new System.Diagnostics.Process();
-                txt.StartInfo.FileName = "notepad.exe";
-                txt.StartInfo.Arguments = path;
-                txt.Start();
+                foreach (DataGridViewRow row in dataGridResult.Rows)
+                {
+                    if (row.Cells[0].Value != null && row.Cells[1].Value != null)
+                    {
+                        writer.WriteLine($"x = {row.Cells[0].Value}, F(x) = {row.Cells[1].Value}");
+                    }
+                }
             }
+
+            MessageBox.Show("Результаты сохранены в файл!", "Сохранение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            chartResult.Series.Clear();
+            chartResult.Series.Add("F(x)");
+            chartResult.Series["F(x)"].ChartType = SeriesChartType.Line;
         }
     }
 }

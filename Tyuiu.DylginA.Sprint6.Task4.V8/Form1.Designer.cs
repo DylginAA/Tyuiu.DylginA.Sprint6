@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             label2 = new Label();
@@ -39,7 +39,7 @@
             textBoxStart = new TextBox();
             groupBox3 = new GroupBox();
             chartResult = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            dataGridView1 = new DataGridView();
+            dataGridResult = new DataGridView();
             X = new DataGridViewTextBoxColumn();
             FX = new DataGridViewTextBoxColumn();
             buttonComplete = new Button();
@@ -49,7 +49,7 @@
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartResult).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridResult).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -109,7 +109,7 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(chartResult);
-            groupBox3.Controls.Add(dataGridView1);
+            groupBox3.Controls.Add(dataGridResult);
             groupBox3.Location = new Point(479, 6);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(687, 363);
@@ -119,31 +119,31 @@
             // 
             // chartResult
             // 
-            chartArea1.Name = "ChartArea1";
-            chartResult.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chartResult.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            chartResult.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chartResult.Legends.Add(legend2);
             chartResult.Location = new Point(172, 30);
             chartResult.Name = "chartResult";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chartResult.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chartResult.Series.Add(series2);
             chartResult.Size = new Size(509, 327);
             chartResult.TabIndex = 1;
             chartResult.Text = "chart1";
             // 
-            // dataGridView1
+            // dataGridResult
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { X, FX });
-            dataGridView1.Location = new Point(14, 29);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(143, 328);
-            dataGridView1.TabIndex = 0;
+            dataGridResult.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridResult.Columns.AddRange(new DataGridViewColumn[] { X, FX });
+            dataGridResult.Location = new Point(14, 29);
+            dataGridResult.Name = "dataGridResult";
+            dataGridResult.RowHeadersVisible = false;
+            dataGridResult.RowHeadersWidth = 51;
+            dataGridResult.Size = new Size(143, 328);
+            dataGridResult.TabIndex = 0;
             // 
             // X
             // 
@@ -212,11 +212,12 @@
             Controls.Add(groupBox1);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chartResult).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridResult).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -233,7 +234,7 @@
         private Label label2;
         private Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartResult;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridResult;
         private DataGridViewTextBoxColumn X;
         private DataGridViewTextBoxColumn FX;
         private TextBox textBoxOut;

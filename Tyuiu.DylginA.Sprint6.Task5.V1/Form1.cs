@@ -17,14 +17,16 @@ namespace Tyuiu.DylginA.Sprint6.Task5.V1
             string path = Path.Combine(Path.GetTempPath(), "DataSprint6", "InPutDataFileTask5V1.txt");
             double[] numbers = ds.LoadFromDataFile(path);
 
-            var pn = numbers.Where(n => n > 0).Select(n => Math.Round(n, 3)).ToArray();
+            var positiveNumbers = numbers.Where(n => n > 0).Select(n => Math.Round(n, 3)).ToArray();
 
+            // Заполнение DataGridView
             dataGridResult.Rows.Clear();
-            foreach (double number in pn)
+            foreach (double number in positiveNumbers)
             {
-                dataGridResult.Rows.Add(Math.Round(number, 3));
+                dataGridResult.Rows.Add(number); // Округленные значения
             }
 
+            // Построение диаграммы
             chartResult.Series.Clear();
             Series series = new Series
             {
@@ -33,7 +35,7 @@ namespace Tyuiu.DylginA.Sprint6.Task5.V1
                 ChartType = SeriesChartType.Column
             };
 
-            foreach (double number in pn)
+            foreach (double number in positiveNumbers)
             {
                 series.Points.Add(number);
             }

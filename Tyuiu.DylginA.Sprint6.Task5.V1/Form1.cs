@@ -2,6 +2,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using Tyuiu.DylginA.Sprint6.Task5.V1.Lib;
+using System.Diagnostics;
 
 namespace Tyuiu.DylginA.Sprint6.Task5.V1
 {
@@ -17,27 +18,31 @@ namespace Tyuiu.DylginA.Sprint6.Task5.V1
             string path = Path.Combine(Path.GetTempPath(), "DataSprint6", "InPutDataFileTask5V1.txt");
             double[] numbers = ds.LoadFromDataFile(path);
 
-            List<double> positiveNumbersList = new List<double>();
+            List<double> pnList = new List<double>();
 
             // Пройдем по массиву и добавим только положительные числа
             foreach (double number in numbers)
             {
                 if (number > 0)  // Проверка на положительные числа
                 {
-                    positiveNumbersList.Add(Math.Round(number, 3));  // Округляем до 3 знаков после запятой
+                    pnList.Add(Math.Round(number, 3));  // Округляем до 3 знаков после запятой
                 }
             }
 
             // Преобразуем список в массив
-            double[] positiveNumbers = positiveNumbersList.ToArray();
+            double[] pn = pnList.ToArray();
 
             // Заполнение DataGridView
             dataGridResult.Rows.Clear();
-            foreach (double number in positiveNumbers)
+            foreach (double number in pn)
             {
                 dataGridResult.Rows.Add(number); // Округленные значения
             }
-
+            Debug.WriteLine("Отфильтрованные положительные числа:");
+            foreach (double number in pn)
+            {
+                Debug.WriteLine(number);  // Выводим каждое положительное число в окно Output
+            }
             // Построение диаграммы
             chartResult.Series.Clear();
             Series series = new Series
@@ -47,7 +52,7 @@ namespace Tyuiu.DylginA.Sprint6.Task5.V1
                 ChartType = SeriesChartType.Column
             };
 
-            foreach (double number in positiveNumbers)
+            foreach (double number in pn)
             {
                 series.Points.Add(number);
             }

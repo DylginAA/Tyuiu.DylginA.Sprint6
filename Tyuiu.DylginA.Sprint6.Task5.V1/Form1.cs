@@ -17,28 +17,19 @@ namespace Tyuiu.DylginA.Sprint6.Task5.V1
             string path = Path.Combine(Path.GetTempPath(), "DataSprint6", "InPutDataFileTask5V1.txt");
             double[] numbers = ds.LoadFromDataFile(path);
 
-            int count = 0;
+            List<double> positiveNumbersList = new List<double>();
+
+            // Пройдем по массиву и добавим только положительные числа
             foreach (double number in numbers)
             {
-                if (number > 0)
+                if (number > 0)  // Проверка на положительные числа
                 {
-                    count++;
+                    positiveNumbersList.Add(Math.Round(number, 3));  // Округляем до 3 знаков после запятой
                 }
             }
 
-            // Создадим массив нужного размера
-            double[] positiveNumbers = new double[count];
-            int index = 0;
-
-            // Добавляем только положительные числа в новый массив
-            foreach (double number in numbers)
-            {
-                if (number > 0)
-                {
-                    positiveNumbers[index] = number;
-                    index++;
-                }
-            }
+            // Преобразуем список в массив
+            double[] positiveNumbers = positiveNumbersList.ToArray();
 
             // Заполнение DataGridView
             dataGridResult.Rows.Clear();

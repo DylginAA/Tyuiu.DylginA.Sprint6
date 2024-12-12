@@ -1,5 +1,6 @@
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using Tyuiu.DylginA.Sprint6.Task5.V1.Lib;
 
 namespace Tyuiu.DylginA.Sprint6.Task5.V1
@@ -16,17 +17,10 @@ namespace Tyuiu.DylginA.Sprint6.Task5.V1
             string path = Path.Combine(Path.GetTempPath(), "DataSprint6", "InPutDataFileTask5V1.txt");
             double[] numbers = ds.LoadFromDataFile(path);
 
-            var positiveNumbers = new System.Collections.Generic.List<double>();
-            foreach (double number in numbers)
-            {
-                if (number > 0)
-                {
-                    positiveNumbers.Add(number);
-                }
-            }
+            var pn = numbers.Where(n => n > 0).Select(n => Math.Round(n, 3)).ToArray();
 
             dataGridResult.Rows.Clear();
-            foreach (double number in positiveNumbers)
+            foreach (double number in pn)
             {
                 dataGridResult.Rows.Add(Math.Round(number, 3));
             }
@@ -39,7 +33,7 @@ namespace Tyuiu.DylginA.Sprint6.Task5.V1
                 ChartType = SeriesChartType.Column
             };
 
-            foreach (double number in positiveNumbers)
+            foreach (double number in pn)
             {
                 series.Points.Add(number);
             }

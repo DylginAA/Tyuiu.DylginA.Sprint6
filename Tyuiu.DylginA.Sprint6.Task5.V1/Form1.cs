@@ -17,7 +17,7 @@ namespace Tyuiu.DylginA.Sprint6.Task5.V1
             string path = Path.Combine(Path.GetTempPath(), "DataSprint6", "InPutDataFileTask5V1.txt");
             double[] numbers = ds.LoadFromDataFile(path);
 
-            var positiveNumbers = numbers.Where(n => n > 0).Select(n => Math.Round(n, 3)).ToArray();
+            var positiveNumbers = numbers.Where(n => n > 0).ToArray();
 
             // Заполнение DataGridView
             dataGridResult.Rows.Clear();
